@@ -385,34 +385,34 @@ if __name__ == "__main__":
         "output",
         nargs="?",
         default=None,
-        help="Path del file audio in output (richiesto per --fix / --fix-experimental)"
+        help="Path of audio file output (needed for --fix / --fix-experimental)"
     )
     parser.add_argument(
         "--fix",
         action="store_true",
-        help="Applica correzione con 24 bande e salva l'audio di output"
+        help="Apply correction with 24 bands and save output file"
     )
     parser.add_argument(
         "--fix-experimental",
         action="store_true",
-        help="Applica correzione con 48 bande e salva l'audio di output"
+        help="Apply correction with 48 bands and save output file"
     )
     parser.add_argument(
         "--graph",
         action="store_true",
-        help="Genera i grafici HTML Plotly"
+        help="Generate HTML graphs with Plotly"
     )
 
     args = parser.parse_args()
 
     if not (args.fix or args.fix_experimental or args.graph):
-        parser.error("Devi specificare almeno uno tra --fix, --fix-experimental, --graph")
+        parser.error("you have to specify at least one of these --fix, --fix-experimental, --graph")
 
     if args.fix and args.fix_experimental:
-        parser.error("Usa solo uno tra --fix e --fix-experimental")
+        parser.error("Use only one between --fix and --fix-experimental")
 
     if (args.fix or args.fix_experimental) and not args.output:
-        parser.error("Con --fix o --fix-experimental devi specificare anche il path di output")
+        parser.error("with --fix or --fix-experimental you have to specify output path")
 
     mode = "experimental" if args.fix_experimental else "stable"
 
@@ -464,3 +464,7 @@ if __name__ == "__main__":
             debug=debug
         )
         print(f"Graph HTML -> {html_path}")
+
+
+
+
