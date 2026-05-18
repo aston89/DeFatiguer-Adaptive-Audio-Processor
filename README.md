@@ -448,7 +448,7 @@ While defatiguer is fundamentally a *perceptual instability analyzer + correctiv
 Instead of trying to detect and suppress “fatiguing micro-artifacts”, SpectralGravity operates on broader structural elements of the signal: it splits audio into coarse spectral regions (low / mid / high bands) and applies **intensity-dependent gain shaping driven by envelope stability, stereo correlation, and energy distribution**. The goal is not to “clean artifacts”, but to maintain a globally coherent energy flow across time and spectrum.
 
 In simpler terms:
-* **defatiguer** - focuses on *micro-instabilities* (local perceptual roughness, masking irregularities, phase tension, temporal contrast spikes) and applies subtle corrective fields that behave almost like perceptual smoothing.
+* **DeFatiguer** - focuses on *micro-instabilities* (local perceptual roughness, masking irregularities, phase tension, temporal contrast spikes) and applies subtle corrective fields that behave almost like perceptual smoothing.
 * **SpectralGravity** - focuses on *macro balance and movement* (how energy is distributed across bands and channels over time), applying controlled gain dynamics and stereo-aware shaping to preserve overall structural stability.
 
 The two tools therefore complement each other but do not overlap in intent:
