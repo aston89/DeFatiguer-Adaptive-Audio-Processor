@@ -258,27 +258,153 @@ In most cases:
 
 ---
 
-# Modes of operation
+Perfetto, questa è la parte “product-grade” del progetto. Ti lascio una sezione README aggiornata, pensata per essere chiara, leggibile e coerente con la nuova CLI e la doppia modalità.
 
-## --fix
-Standard mode.
+---
 
-- 24-band analysis
-- conservative correction model
-- optimized for stability and minimal artefacts
+# Usage
 
-## --fix-experimental
-High-resolution mode.
+Defatiguer can operate in three modes:
 
-- 48-band geometric analysis
-- increased sensitivity to micro-structure
-- slightly more reactive correction field
+* analysis only (no audio modification)
+* corrective processing (`--fix`)
+* experimental corrective processing (`--fix-experimental`)
+* diagnostic visualization (`--graph`)
 
-Used for:
+### Basic analysis
 
-- detailed inspection
-- fragile or complex material
-- research/analysis purposes
+```bash
+python defatiguer.py input.wav
+```
+
+This runs a full fatigue analysis and prints a set of perceptual metrics without modifying the audio.
+
+### Standard correction (stable mode)
+
+```bash
+python defatiguer.py input.wav output.wav --fix
+```
+
+Applies a conservative 24-band correction model.
+
+This mode is designed to:
+
+* preserve the original stereo image
+* apply minimal spectral attenuation only where instability is detected
+* avoid altering the overall tonal character of the mix
+
+### Experimental correction (high-resolution mode)
+
+```bash
+python defatiguer.py input.wav output.wav --fix-experimental
+```
+
+Uses a 48-band logarithmic spectral decomposition.
+
+Compared to stable mode, this version:
+
+* increases spectral resolution significantly
+* produces more localized corrective actions in time-frequency space
+* reacts more precisely to narrowband instability events
+* is more sensitive to transient spectral irregularities
+
+This mode can produce more noticeable micro-adjustments, but still operates within a conservative gain envelope to avoid destructive processing.
+
+### Visualization mode
+
+```bash
+python defatiguer.py input.wav output.wav --graph
+```
+
+Generates an interactive HTML report including:
+
+* before/after fatigue metrics
+* time-frequency gain maps
+* per-band correction intensity over time
+
+The output file will be saved as:
+
+```
+*_graphs.html
+```
+
+## Output metrics
+
+The analysis engine produces a set of normalized perceptual indicators:
+
+### stereo
+
+Estimates stereo coherence between left and right channels.
+Higher values indicate stronger phase or amplitude imbalance between channels.
+
+### phase
+
+Measures broadband phase instability across the stereo field.
+High values often correlate with perceived spatial “smearing” or loss of focus.
+
+### dynamic
+
+Represents micro-dynamic irregularity in the RMS envelope of the signal.
+High values indicate unstable or overly uneven energy distribution over time.
+
+### artifact_stability
+
+A synthetic field derived from spectral structure stability across time and frequency bands.
+
+High values indicate consistent spectral behavior (lower perceived fatigue).
+
+### temporal_contrast (if enabled in experimental flows)
+
+Measures rapid changes in stability patterns over time, highlighting “attention jitter” in the spectral domain.
+
+## Fatigue score
+
+The final score is a normalized combination of:
+
+* stereo incoherence
+* phase instability
+* dynamic instability
+* spectral structural instability
+* temporal contrast (when available)
+
+The score is bounded between 0 and 1:
+
+* **0.0 – 0.3** → low perceived fatigue
+* **0.3 – 0.6** → moderate instability, potentially noticeable in long listening sessions
+* **0.6 – 1.0** → high fatigue risk (masking issues, spatial blur, or unstable spectral behavior)
+
+This score is not a loudness or mastering metric.
+It is a *perceptual stability heuristic*.
+
+## Design philosophy
+
+Defatiguer is not a mastering tool and does not attempt to “improve sound quality” in a traditional sense.
+
+Instead, it models audio as a **time-varying perceptual system**, where discomfort arises from instability patterns rather than absolute spectral content.
+
+The corrective engine therefore:
+
+* avoids global EQ decisions
+* avoids compression-based loudness normalization
+* avoids stylistic assumptions about genre or target sound
+* applies only localized, stability-driven attenuation
+
+The goal is not to “change the mix”, but to reduce perceptual load caused by unstable spectral and spatial micro-events.
+
+## Stable vs Experimental mode
+
+Stable mode (24 bands):
+
+* smoother corrections
+* safer for mastered or commercial material
+* minimal spectral disturbance
+
+Experimental mode (48 bands):
+
+* higher resolution spectral model
+* better sensitivity to narrow artifacts
+* slightly more aggressive micro-corrections
+* recommended for analysis, restoration, or damaged audio sources
 
 ---
 
@@ -319,16 +445,6 @@ Instead it relies on:
 
 ---
 
-# Summary
-
-Defatiguer is a perceptual stabilisation framework that reduces listening fatigue by identifying and attenuating unstable spectral-temporal interactions in audio material.
-
-It does not attempt to improve sound in an absolute sense.
-
-It attempts to make sound easier to follow over time.
-
----
-
 # Related tool: [SpectralGravity Processor](https://github.com/aston89/SpectralGravity-Processor)
 
 Alongside *defatiguer*, there is a complementary tool called **[SpectralGravity Processor](https://github.com/aston89/SpectralGravity-Processor)**, which approaches audio processing from a different conceptual angle.
@@ -347,7 +463,3 @@ SpectralGravity tries to stabilize “how the mix behaves as a system over time�
 Because of this difference, SpectralGravity is intentionally not designed to perform fine corrective masking or artifact suppression. Instead, it prioritizes predictable macro-dynamics and conservative band-level modulation, often producing results that feel more “leveled” rather than “cleaned”.
 
 A deeper technical overview of SpectralGravity is available in its [dedicated repository](https://github.com/aston89/SpectralGravity-Processor).
-
-
-
-
