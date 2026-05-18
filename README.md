@@ -258,10 +258,6 @@ In most cases:
 
 ---
 
-Perfetto, questa è la parte “product-grade” del progetto. Ti lascio una sezione README aggiornata, pensata per essere chiara, leggibile e coerente con la nuova CLI e la doppia modalità.
-
----
-
 # Usage
 
 Defatiguer can operate in three modes:
