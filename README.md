@@ -441,7 +441,7 @@ Instead it relies on:
 
 ---
 
-## Related tool: SpectralGravity Processor
+## Related tool
 
 Alongside *defatiguer*, there is a complementary tool called **[SpectralGravity Processor](https://github.com/aston89/SpectralGravity-Processor)**, which approaches audio processing from a different conceptual angle.
 While defatiguer is fundamentally a *perceptual instability analyzer + corrective field system* (it models “listening fatigue” as a combination of temporal, spectral, stereo and phase instabilities and then applies localized corrective attenuation), SpectralGravity works more like a *macro-dynamic balancing engine*.
