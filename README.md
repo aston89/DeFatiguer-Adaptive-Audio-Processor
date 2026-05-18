@@ -1,6 +1,6 @@
-# DeFatiguer
+# DeFatiguer :
 
-Defatiguer is a lightweight perceptual audio stabilisation tool designed to reduce listening fatigue in problematic audio material without altering its overall aesthetic identity.
+a lightweight perceptual audio stabilisation tool designed to reduce listening fatigue in problematic audio material without altering its overall aesthetic identity.
 
 It operates as a non-destructive analysis-and-attenuation system that targets micro-instabilities in spectral, temporal, and stereo domains, rather than applying global mastering-style transformations.
 
