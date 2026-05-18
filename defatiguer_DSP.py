@@ -60,16 +60,12 @@ def make_bands(mode="stable"):
             (14000, 16000), (16000, 20000)
         ]
 
-    # experimental: densificazione logaritmica controllata (48 bande)
     edges = np.geomspace(20, 20000, 49)
     return [(edges[i], edges[i + 1]) for i in range(len(edges) - 1)]
 
 
 def band_labels(bands):
-    labels = []
-    for low, high in bands:
-        labels.append(f"{int(round(low))}-{int(round(high))}")
-    return labels
+    return [f"{int(round(low))}-{int(round(high))}" for low, high in bands]
 
 
 # =========================================================
@@ -258,15 +254,9 @@ def gentle_cleanup(y, sr, mode="stable", return_debug=False):
 # PLOTLY REPORT
 # =========================================================
 def generate_plotly_report_html(html_path, y, y_clean, sr, mode, original_metrics, cleaned_metrics, debug):
-    try:
-        import plotly.graph_objects as go
-        from plotly.subplots import make_subplots
-        import plotly.io as pio
-    except Exception as e:
-        raise RuntimeError(
-            "Plotly non è disponibile in questo ambiente. "
-            "Installa plotly per usare --graph."
-        ) from e
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+    import plotly.io as pio
 
     metric_names = [
         "stereo",
@@ -309,18 +299,18 @@ def generate_plotly_report_html(html_path, y, y_clean, sr, mode, original_metric
         vertical_spacing=0.10,
         row_heights=[0.28, 0.42, 0.30],
         subplot_titles=(
-            "Metriche prima / dopo",
-            "Mappa di modifica per banda e tempo",
-            "Modifica media per banda"
+            "Metrics before / after",
+            "Band/time modification map",
+            "Average band modification"
         )
     )
 
     fig.add_trace(
-        go.Bar(x=metric_names, y=original_values, name="Originale"),
+        go.Bar(x=metric_names, y=original_values, name="Original"),
         row=1, col=1
     )
     fig.add_trace(
-        go.Bar(x=metric_names, y=cleaned_values, name="Corretto"),
+        go.Bar(x=metric_names, y=cleaned_values, name="Cleaned"),
         row=1, col=1
     )
 
@@ -338,26 +328,26 @@ def generate_plotly_report_html(html_path, y, y_clean, sr, mode, original_metric
     )
 
     fig.add_trace(
-        go.Bar(x=labels, y=avg_gain, name="Gain medio"),
+        go.Bar(x=labels, y=avg_gain, name="Average gain"),
         row=3, col=1
     )
 
     fig.update_layout(
-        title=f"Defatiguer report — mode: {mode}",
+        title=f"Defatiguing report — mode: {mode}",
         barmode="group",
         height=1200,
         width=1500,
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
     )
 
-    fig.update_yaxes(title_text="Valore", row=1, col=1)
-    fig.update_xaxes(title_text="Metrica", row=1, col=1)
+    fig.update_yaxes(title_text="Value", row=1, col=1)
+    fig.update_xaxes(title_text="Metric", row=1, col=1)
 
-    fig.update_yaxes(title_text="Banda", autorange="reversed", row=2, col=1)
-    fig.update_xaxes(title_text="Tempo (s)", row=2, col=1)
+    fig.update_yaxes(title_text="Band", autorange="reversed", row=2, col=1)
+    fig.update_xaxes(title_text="Time (s)", row=2, col=1)
 
-    fig.update_yaxes(title_text="Gain medio", row=3, col=1)
-    fig.update_xaxes(title_text="Banda", tickangle=45, row=3, col=1)
+    fig.update_yaxes(title_text="Average gain", row=3, col=1)
+    fig.update_xaxes(title_text="Band", tickangle=45, row=3, col=1)
 
     pio.write_html(fig, file=html_path, include_plotlyjs="cdn", full_html=True)
 
@@ -374,45 +364,48 @@ def derive_html_path(base_path):
 # CLI
 # =========================================================
 if __name__ == "__main__":
-    import sys
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Defatiguer audio: fix, experimental fix, and/or graph report."
+        description="Audio defatiguing tool: fix, experimental fix, and/or graph report."
     )
-    parser.add_argument("input", help="Path del file audio in input")
+
+    parser.add_argument("input", help="Input audio file path")
     parser.add_argument(
         "output",
         nargs="?",
         default=None,
-        help="Path of audio file output (needed for --fix / --fix-experimental)"
+        help="Output audio file path (required for --fix / --fix-experimental)"
     )
+
     parser.add_argument(
         "--fix",
         action="store_true",
         help="Apply correction with 24 bands and save output file"
     )
+
     parser.add_argument(
         "--fix-experimental",
         action="store_true",
         help="Apply correction with 48 bands and save output file"
     )
+
     parser.add_argument(
         "--graph",
         action="store_true",
-        help="Generate HTML graphs with Plotly"
+        help="Generate HTML report with Plotly"
     )
 
     args = parser.parse_args()
 
     if not (args.fix or args.fix_experimental or args.graph):
-        parser.error("you have to specify at least one of these --fix, --fix-experimental, --graph")
+        parser.error("You must specify at least one of: --fix, --fix-experimental, --graph")
 
     if args.fix and args.fix_experimental:
-        parser.error("Use only one between --fix and --fix-experimental")
+        parser.error("Use only one of --fix or --fix-experimental")
 
     if (args.fix or args.fix_experimental) and not args.output:
-        parser.error("with --fix or --fix-experimental you have to specify output path")
+        parser.error("With --fix or --fix-experimental you must specify an output path")
 
     mode = "experimental" if args.fix_experimental else "stable"
 
@@ -439,7 +432,7 @@ if __name__ == "__main__":
         clean_score, clean_metrics = compute_fatigue(y_clean, sr, mode=mode)
 
         print("\n==============================")
-        print(" AFTER CLEANUP")
+        print(" AFTER CLEANING")
         print("==============================\n")
         print(f"Score (0–1): {clean_score:.3f}\n")
 
@@ -453,6 +446,7 @@ if __name__ == "__main__":
     if args.graph:
         html_base = args.output if args.output else args.input
         html_path = derive_html_path(html_base)
+
         generate_plotly_report_html(
             html_path=html_path,
             y=y,
@@ -463,8 +457,5 @@ if __name__ == "__main__":
             cleaned_metrics=clean_metrics,
             debug=debug
         )
+
         print(f"Graph HTML -> {html_path}")
-
-
-
-
