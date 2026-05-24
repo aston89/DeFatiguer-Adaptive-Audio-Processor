@@ -133,18 +133,16 @@ Output Files
 ## Related tool
 
 Alongside *DeFatiguer*, there is a complementary tool called **[SpectralGravity Processor](https://github.com/aston89/SpectralGravity-Processor)**, which approaches audio processing from a different conceptual angle.
-While DeFatiguer is fundamentally a *perceptual instability analyzer + corrective field system* (it models “listening fatigue” as a combination of temporal, spectral, stereo and phase instabilities and then applies localized corrective attenuation), SpectralGravity works more like a *macro-dynamic balancing engine*.
-Instead of trying to detect and suppress “fatiguing micro-artifacts”, SpectralGravity operates on broader structural elements of the signal: it splits audio into coarse spectral regions (low / mid / high bands) and applies **intensity-dependent gain shaping driven by envelope stability, stereo correlation, and energy distribution**. The goal is not to “clean artifacts”, but to maintain a globally coherent energy flow across time and spectrum.
+While DeFatiguer is fundamentally a *perceptual instability analyzer + corrective field system* (as a combination of temporal, spectral, stereo and phase instabilities), SpectralGravity works more like a *macro-dynamic balancing engine*.
+Instead of trying to detect and suppress “fatiguing micro-artifacts”, SpectralGravity operates on broader structural elements of the signal: it splits audio into coarse spectral regions (low / mid / high) and applies **intensity-dependent gain shaping driven by envelope stability, stereo correlation, and energy distribution**.
+The goal of SpectralGravity is not to “clean artifacts” but to maintain a globally coherent energy flow across time and spectrum.
 
 In simpler terms:
 * **DeFatiguer** - focuses on *micro-instabilities* (local perceptual roughness, masking irregularities, phase tension, temporal contrast spikes) and applies subtle corrective fields that behave almost like perceptual smoothing.
 * **SpectralGravity** - focuses on *macro balance and movement* (how energy is distributed across bands and channels over time), applying controlled gain dynamics and stereo-aware shaping to preserve overall structural stability.
 
 The two tools therefore complement each other but do not overlap in intent:
-
-DeFatiguer tries to reduce “what feels tiring when you listen closely”,
-SpectralGravity tries to stabilize “how the mix behaves as a system over time”.
-
-Because of this difference, SpectralGravity is intentionally not designed to perform fine corrective masking or artifact suppression. Instead, it prioritizes predictable macro-dynamics and conservative band-level modulation, often producing results that feel more “leveled” rather than “cleaned”.
+* **DeFatiguer** - tries to reduce “what feels tiring when you listen closely”.
+* **SpectralGravity** - tries to stabilize “how the mix behaves as a system over time”.
 
 A deeper technical overview of SpectralGravity is available in its [dedicated repository](https://github.com/aston89/SpectralGravity-Processor).
