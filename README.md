@@ -130,6 +130,18 @@ Output Files
 
 ---
 
+# Notes
+
+Defatiguer presents a particularly interesting utility in **broadcast scenarios**, especially in traditional radio environments where prolonged listening is common.
+By addressing spectral instabilities and phase incoherence, it allows for more comfortable extended listening sessions, reducing auditory fatigue that can arise from continuous exposure to potentially problematic material.
+This can be especially valuable for formats that rely on long-term engagement such as **heavy electronic compressed music**, talk radio or all-day music programming.
+
+Additionally, Defatiguer shows promise as a **valuable tool in pre-loudness maximization workflows**. In these situations, its ability to mitigate various types of instabilities can effectively "clean up" the signal before it hits the final limiter.
+This can allow the limiter to work more efficiently and assertively without introducing undesirable artifacts, ultimately permitting a hotter final output while preserving a greater degree of sonic integrity.
+In practical terms : it essentially allows the limiter to **"pump harder"** (to borrow some colorful engineer slang) in a way that enhances overall loudness and impact without sacrificing quality. This positions Defatiguer as a strategic insert ahead of loudness maximization stages in mastering chains, particularly for genres or formats that aim for competitive loudness levels.
+
+---
+
 ## Related tool
 
 Alongside *DeFatiguer*, there is a complementary tool called **[SpectralGravity Processor](https://github.com/aston89/SpectralGravity-Processor)**, which approaches audio processing from a different conceptual angle.
