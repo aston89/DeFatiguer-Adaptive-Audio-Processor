@@ -1,4 +1,4 @@
-# DeFatiguer
+# DeFatiguer: Adaptive audio processor
 A lightweight perceptual audio stabilization tool designed to reduce listening fatigue in problematic audio material without altering its overall aesthetic identity.
 It operates as a non-destructive analysis-and-attenuation system, targeting micro-instabilities in spectral, temporal and stereo domains rather than applying global mastering-style transformations.
 
