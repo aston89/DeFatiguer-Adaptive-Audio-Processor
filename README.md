@@ -66,9 +66,7 @@ Each stage contributes to a hierarchical model of “perceptual stability”.
 # How it Works
 
 1. Psychoacoustic Band Definition
-The system operates on a set of psychoacoustic bands derived from Mel frequencies. The number of bands can be configured:
-- Stable mode: 192 bands
-- Experimental mode: 384 bands
+The system operates on 192 psychoacoustic bands derived from Mel frequencies.
 
 2. Spectral Matrix Construction
 The signal is transformed into a time-frequency representation using the Short-Time Fourier Transform (STFT). Instead of operating on raw FFT bins, the spectrum is grouped into the defined perceptual bands.
