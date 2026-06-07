@@ -11,7 +11,7 @@ It allows for more comfortable extended listening sessions by addressing spectra
 This can be especially valuable for formats that rely on long-term engagement such as **heavy electronic compressed music**, talk radio or all-day music programming.
 
 Additionally, Defatiguer shows promise as a **valuable tool in pre-loudness maximization workflows**.
-In these situations, its ability to mitigate various types of instabilities can effectively "clean up" the signal before it hits the final limiter.
+In these situations, its ability to mitigate various types of instabilities can effectively "clean up" the signal before it hits the final limiter (less harsh cymbals, less fatigue on vocals, less stereo "pull" in dense mixes etc etc).
 This can allow the limiter to work more efficiently and assertively without introducing undesirable artifacts, ultimately permitting a hotter final output while preserving a greater degree of sonic integrity.
 In practical terms : it essentially allows the limiter to **"pump harder"** (to borrow some colorful engineer slang) in a way that enhances overall loudness and impact without sacrificing quality. This positions Defatiguer as a strategic insert ahead of loudness maximization stages in mastering chains, particularly for genres or formats that aim for competitive loudness levels.
 
