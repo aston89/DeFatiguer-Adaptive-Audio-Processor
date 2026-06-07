@@ -1,16 +1,17 @@
 # DeFatiguer: Adaptive audio processor
-A lightweight perceptual audio stabilization tool designed to reduce listening fatigue in problematic audio material without altering its overall aesthetic identity.
+
+A lightweight cli dsp tool designed to reduce listening fatigue in problematic audio material without altering its overall aesthetic identity.
+The idea is simple, instead of “improving the sound”, DeFatiguer reduces the perceptual effort required to follow it.
 It operates as a non-destructive analysis-and-attenuation system, targeting micro-instabilities in spectral, temporal and stereo domains rather than applying global mastering-style transformations.
 
-Defatiguer presents a particularly interesting utility in **broadcast scenarios**, especially in traditional radio environments where prolonged listening is common.
-By addressing spectral instabilities and phase incoherence, it allows for more comfortable extended listening sessions, reducing auditory fatigue that can arise from continuous exposure to potentially problematic material.
+Defatiguer presents a particularly interesting utility in **broadcast scenarios**, especially in traditional radio environments where prolonged listening is common. 
+It allows for more comfortable extended listening sessions by addressing spectral instabilities and phase incoherency, reducing auditory fatigue that can arise from continuous exposure to potentially problematic material.
 This can be especially valuable for formats that rely on long-term engagement such as **heavy electronic compressed music**, talk radio or all-day music programming.
 
-Additionally, Defatiguer shows promise as a **valuable tool in pre-loudness maximization workflows**. In these situations, its ability to mitigate various types of instabilities can effectively "clean up" the signal before it hits the final limiter.
+Additionally, Defatiguer shows promise as a **valuable tool in pre-loudness maximization workflows**.
+In these situations, its ability to mitigate various types of instabilities can effectively "clean up" the signal before it hits the final limiter.
 This can allow the limiter to work more efficiently and assertively without introducing undesirable artifacts, ultimately permitting a hotter final output while preserving a greater degree of sonic integrity.
 In practical terms : it essentially allows the limiter to **"pump harder"** (to borrow some colorful engineer slang) in a way that enhances overall loudness and impact without sacrificing quality. This positions Defatiguer as a strategic insert ahead of loudness maximization stages in mastering chains, particularly for genres or formats that aim for competitive loudness levels.
-
-The core idea is simple: instead of “improving the sound”, DeFatiguer reduces the perceptual effort required to follow it.
 
 ---
 
@@ -18,7 +19,7 @@ The core idea is simple: instead of “improving the sound”, DeFatiguer reduce
 
 DeFatiguer is not a mastering tool and is not a creative effect, it sits in a different category:
 
-> **perceptual stabilization layer for pre-existing audio material**
+> **experimental psychoacustical stabilization layer for pre-existing audio material**
 
 It analyzes an input signal and applies extremely conservative, locally-adaptive corrections that aim to reduce:
 - Spectral masking instability
@@ -49,9 +50,7 @@ It is especially useful when:
 
 # Core Principle
 
-The system is built around a single assumption:
-> **Listening fatigue is not caused by global defects but by local instability in perceptual attention.**
-
+The system is built around a single assumption: **Listening fatigue is not caused by global defects but by local instability in perceptual attention**.
 Instead of correcting frequency balance or dynamics directly, DeFatiguer models how attention shifts over time and frequency, then reduces unnecessary volatility in that structure.
 
 ---
@@ -69,9 +68,7 @@ The processing pipeline is composed of several main stages:
 
 Each stage contributes to a hierarchical model of “perceptual stability”.
 
----
-
-# How it Works
+## How it Works
 
 1. Psychoacoustic Band Definition
 The system operates on 192 psychoacoustic bands derived from Mel frequencies.
