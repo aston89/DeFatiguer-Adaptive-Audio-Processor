@@ -115,6 +115,7 @@ The correction stage applies stability-aware attenuation:
 - Gain shaping is applied based on the stability metrics.
 - The signal is reconstructed, preserving the original stereo image.
 </details>
+
 ---
 
 # Usage
