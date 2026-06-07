@@ -28,7 +28,13 @@ It analyzes an input signal and applies extremely conservative, locally-adaptive
 - Micro-dynamic irregularities
 - Rapid perceptual attention shifts
 
-The system is intentionally designed to remain close to the original signal, often producing changes that are subtle or not immediately obvious in short A/B comparisons.
+In practice, DeFatiguer does not change tonal balance in an obvious way.
+You don’t get a brighter or darker mix, and the stereo image remains largely intact.
+
+What changes is the behavior of the sound over time:
+harsh elements feel less “sticky”, dense sections become easier to follow, and long listening sessions require less active effort to stay focused.
+
+**The effect is often subtle in short A/B tests**, but becomes more evident over extended listening or in material that previously felt fatiguing or unstable.
 
 ---
 
@@ -67,8 +73,8 @@ The processing pipeline is composed of several main stages:
 7. Gentle Cleanup (stereo-preserving correction)
 
 Each stage contributes to a hierarchical model of “perceptual stability”.
-
-## How it Works
+<details>
+<summary>## How it Works</summary>summary>
 
 1. Psychoacoustic Band Definition
 The system operates on 192 psychoacoustic bands derived from Mel frequencies.
@@ -106,7 +112,7 @@ The correction stage applies stability-aware attenuation:
 - Mid/Side decomposition is performed.
 - Gain shaping is applied based on the stability metrics.
 - The signal is reconstructed, preserving the original stereo image.
-
+</details>
 ---
 
 # Usage
