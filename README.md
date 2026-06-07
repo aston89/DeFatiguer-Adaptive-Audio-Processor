@@ -22,6 +22,21 @@ In practical terms : it essentially allows the limiter to **"pump harder"** (to 
 DeFatiguer is not a mastering tool and is not a creative effect, it sits in a different category:
 > **experimental psychoacustical stabilization layer for pre-existing audio material**
 
+## Typical behavior
+DeFatiguer does not produce uniform results across all material.
+Its effect depends on the level and type of perceptual instability present in the source.
+
+- **Highly unstable / harsh material**  
+  Noticeable reduction in listening fatigue, improved continuity and smoother perceptual flow.
+  
+- **Moderately dense mixes**  
+  Subtle change in how elements separate over time, with reduced perceptual “clutter”
+
+- **Already stable material**  
+  Minimal audible change by design; the signal remains largely untouched.
+
+The effect is not always about obvious sonic differences, but about changes in listening effort over time.
+
 ---
 
 # What it does
