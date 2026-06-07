@@ -74,7 +74,9 @@ The processing pipeline is composed of several main stages:
 
 Each stage contributes to a hierarchical model of “perceptual stability”.
 
-<details><summary>**How it Works**</summary>
+---
+# How it Works
+<details><summary>expand for details</summary>
 
 1. Psychoacoustic Band Definition
 The system operates on 192 psychoacoustic bands derived from Mel frequencies.
