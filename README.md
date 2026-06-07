@@ -1,6 +1,6 @@
 # DeFatiguer: Adaptive audio processor
 
-A perceptual stabilization tool for reducing fatigue in audio playback without changing tonal identity.
+**A perceptual stabilization tool for reducing fatigue in audio playback without changing tonal identity**.
 The idea is simple, instead of “improving the sound”, DeFatiguer reduces the perceptual effort required to follow it.
 It operates as a non-destructive analysis-and-attenuation system, targeting micro-instabilities in spectral, temporal and stereo domains rather than applying global mastering-style transformations.
 The system is built around a single assumption: **Listening fatigue is not caused by global defects but by local instability in perceptual attention**.
