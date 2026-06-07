@@ -114,11 +114,11 @@ The correction stage applies stability-aware attenuation:
 
 # Usage
 
-Basic analysis
-python DeFatiguer_DSP.py input.wav
+Basic analysis :
+> python DeFatiguer_DSP.py input.wav
 
-Perceptual redistribution
-python DeFatiguer_DSP.py input.wav output.wav --fix
+Perceptual redistribution :
+> python DeFatiguer_DSP.py input.wav output.wav --fix
 
 Command-line options:
 - --fix: Apply the perceptual redistribution to reduce fatigue.
