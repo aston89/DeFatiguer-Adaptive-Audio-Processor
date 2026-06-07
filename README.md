@@ -29,7 +29,9 @@ It analyzes an input signal and applies extremely conservative, locally-adaptive
 - Micro-dynamic irregularities
 - Rapid perceptual attention shifts
 
-In practice, DeFatiguer does not change tonal balance in an obvious way.
+In practice, DeFatiguer does not change tonal balance in an obvious way : 
+It is not designed to fix bad mixes or replace EQ/compression decisions.
+In some material the effect may be minimal by design.
 You don’t get a brighter or darker mix and the stereo image remains largely intact.
 
 What changes is the behavior of the sound over time:
